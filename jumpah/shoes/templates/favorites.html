@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Jumpah - Favorites
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block body %}
+    {% if favorites %}
+        {% for shoe in favorites %}
+        <div>
+            <img src="{{ shoe.shoe.image.url }}" alt="{{ shoe.shoe.title }}" style="max-width: 400px;">
+            <h3>{{ shoe.shoe.title }}</h3>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No favorite shoes found.</p>
+    {% endif %}
+{% endblock %}

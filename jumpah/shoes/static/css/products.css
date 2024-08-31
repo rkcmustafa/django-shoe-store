@@ -1,0 +1,164 @@
+.title {
+  color: #333;
+  font-size: 2rem;
+}
+
+.like-button {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  box-shadow: 2px 2px 4px #666;
+  cursor: pointer;
+}
+
+section {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto;
+  margin-top: 1.2rem;
+}
+
+section > div {
+  width: 100%;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 2px 2px 6px #ddd;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+section > div > a:link {
+  font-size: 1.2rem;
+  color: #444;
+  text-decoration: none;
+}
+
+section > div > a:visited {
+  color: #444;
+}
+
+section h3 {
+  font-size: 1.2rem;
+}
+
+section > div > p {
+  color: #666;
+  font-size: 0.9rem;
+  height: 36px;
+}
+
+section > div > img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 5px;
+}
+
+.button-container {
+  position: relative;
+}
+
+.button-container > button {
+  width: 100%;
+  color: white;
+  background-color: var(--main-blue);
+  text-align: center;
+  padding-block: 0.6rem;
+  border-radius: 5px;
+  margin-top: 0.4rem;
+  border: none;
+  cursor: pointer;
+}
+
+.sizes-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.sizes-container div {
+  display: flex;
+}
+
+.sizes-container .sizes span {
+  background: #eaeaea;
+  width: 27px;
+  height: 27px;
+  padding: 4px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 0.9rem;
+  cursor: default;
+}
+
+.sizes {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  position: absolute;
+  right: 0;
+  top: -68px;
+  font-size: 0.9rem;
+}
+
+.amount button {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  border: none;
+  border-radius: 9px;
+  font-size: 1rem;
+  background: #bbb;
+  color: white;
+  cursor: pointer;
+}
+
+section .price {
+  color: #444;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.star-container {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.star-icon {
+  width: 23px;
+  height: 23px;
+}
+
+@media screen and (min-width: 400px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  section {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  section {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

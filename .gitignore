@@ -1,0 +1,62 @@
+# Virtual environment
+env/
+venv/
+ENV/
+.env/
+.venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Django stuff:
+*.log
+staticfiles/
+media/*.tmp
+media/**/*.tmp
+media/**/*.log
+
+# Django database
+db.sqlite3
+db.sqlite3-journal
+
+# dotenv environment variables file
+.env
+
+# Django migrations
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+*/migrations/__pycache__/
+
+# pytest
+.cache/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# VS Code files
+.vscode/
+
+# PyCharm files
+.idea/
+
+# macOS specific files
+.DS_Store

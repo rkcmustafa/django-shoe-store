@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Jumpah - Basket
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/basket.css' %}">
+{% endblock %}
+
+{% block body %}
+    {% if basket %}
+        <h2 class="basket-title">Your Basket</h2>
+        <section>
+        {% for item in basket %}
+            <div>
+                <img src="{{ item.shoe.image.url }}" alt="{{ item.shoe.title }}" loading="lazy">
+                <h3>{{item.shoe.title}}</h3>
+                <p>{{item.shoe.description}}</p>
+                <span class="price">{{item.shoe.price}}$</span>
+                <div class="actions">
+                    <div class="amount-container">
+                        <button class="increment" onclick="increment('{{item.shoe.id}}')">+</button>
+                        <span id="{{item.shoe.id}}">{{item.amount}}</span>
+                        <button class="decrement" onclick="decrement('{{item.shoe.id}}')">-</button>
+                    </div>
+                    <button class="remove" onclick="handleRemove(this, '{{item.shoe.id}}')">Remove</button>
+                </div>
+            </div>
+        {% endfor %}
+        </section>
+    {% else %}
+        <div class="empty">
+            <p>Your basket is empty.</p>
+            <a href="{% url 'products' %}">Continue shopping</a>
+        </div>
+    {% endif %}
+
+
+
+    <script>
+        function handleRemove(button, shoeId) {
+            shoeId = Number(shoeId);
+
+            fetch("{% url 'basket' %}", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    shoe_id: shoeId,
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === "success") {
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+
+        function updateAmount(shoeId, amount) {
+            fetch("{% url 'basket' %}", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    shoe_id: shoeId,
+                    amount: amount
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === "success") {
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+        
+        function increment(shoeId) {
+            shoeId = Number(shoeId);
+            const amount = Number(document.getElementById(shoeId).textContent) + 1;
+            
+            document.getElementById(shoeId).textContent = amount;
+            updateAmount(shoeId, amount); // Burada sunucudaki miktarı güncelleyin
+        }
+        
+        function decrement(shoeId) {
+            shoeId = Number(shoeId);
+            const amount = Number(document.getElementById(shoeId).textContent);
+        
+            if (amount > 1) {
+                const newAmount = amount - 1;
+                document.getElementById(shoeId).textContent = newAmount;
+                updateAmount(shoeId, newAmount); // Burada sunucudaki miktarı güncelleyin
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Jumpah Store
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block body %}
+    <main>
+        <h2>The Adress Of Shoes</h2>
+        <h1>Best Sport Shoes at Jumpah Store</h1>
+        <p>At Jumpah Store, we specialize in providing high-quality sport shoes designed for athletes and fitness enthusiasts.
+            Our collection features the latest models from top brands, ensuring you have 
+            the best footwear to enhance your performance and comfort.
+        </p>
+        <div>
+            <img src="{% static 'images/sample-1.jpeg' %}" alt="">
+            <img src="{% static 'images/sample-2.jpeg' %}" alt="">
+            <img src="{% static 'images/sample-3.jpeg' %}" alt="">
+            <img src="{% static 'images/sample-4.jpeg' %}" alt="">
+        </div>
+    </main>
+{% endblock %}

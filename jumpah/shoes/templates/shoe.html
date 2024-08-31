@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Jumpah - {{ shoe.title }}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block body %}
+    <img src="{{shoe.image.url}}" alt="{{shoe.title}}" style="max-width: 400px;">
+    <h3>{{shoe.title}}</h3>
+    <p>{{shoe.description}}</p>
+    <div>{{shoe.price}}$</div>
+    <div>{{shoe.gender}}</div>
+    <div>{{shoe.color}}</div>
+{% endblock %}
+

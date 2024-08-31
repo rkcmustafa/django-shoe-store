@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Jumpah - Login
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block body %}
+    <div>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            {% if messages %}
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit">Login</button>
+            <a href="{% url 'signup' %}">Don't you have an account?</a>
+        </form>
+    </div>
+{% endblock %}

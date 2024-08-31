@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <script src="{% static 'js/script.js' %}" defer></script>
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    {% block extra_css %}
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="jumpah">jumpah</div>
+            <nav class="top-nav">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'products' %}">Products</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'favorites' %}">Favorites</a>
+                    <a href="{%url 'basket' %}">Basket</a>
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'signup' %}">Sign up</a>
+                {% endif %}
+            </nav>
+            <div class="menu-icon" id="menu-icon">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav class="side-nav" id="side-nav">
+                <div class="jumpah">jumpah</div>
+                <div class="links">
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'products' %}">Products</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'favorites' %}">Favorites</a>
+                        <a href="{%url 'basket' %}">Basket</a>
+                        <div class="bottom">
+                            <a href="{% url 'logout' %}" class="logout-link">Logout</a>
+                        </div>
+                    {% else %}
+                        <div class="bottom">
+                            <a href="{% url 'login' %}" class="login-link">Login</a>
+                            <a href="{% url 'signup' %}" class="signup-link">Sign up</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+        {% block body %}
+        {% endblock %}
+        <footer>
+            <div class="email-icon">
+                <img src="{% static 'images/mail.png' %}" alt="mail icon">
+            </div>
+            <div>
+                <div>
+                    <h2>Keep up with the latest</h2>
+                    <p>Join our newsletter to stay up to date on features and releases.</p>
+                </div>
+                <div class="email-area">
+                    <label for="">Stay up to date</label>
+                    <form action="">
+                        <input type="text" placeholder="Enter your email">
+                        <button>Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="links">
+                <div>
+                    <h3>Jumpah</h3>
+                    <a href="#">Payment</a>
+                    <a href="#">Card</a>
+                    <a href="#">Pricing</a>
+                </div>
+                <div>
+                    <h3>Products</h3>
+                    <a href="#">Personal</a>
+                    <a href="#">Business</a>
+                    <a href="#">Imvoice</a>
+                </div>
+                <div>
+                    <h3>Company</h3>
+                    <a href="#">About</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press Kit</a>
+                </div>
+                <div>
+                    <h3>Support</h3>
+                    <a href="#">Help</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

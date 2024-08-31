@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Jumpah - Sign Up
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
+
+{% block body %}
+    <h1>Create Your Account</h1>
+    <form action="{% url 'signup' %}" method="post">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+        <input type="email" name="email" placeholder="example123@mail.com">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password_repeat" placeholder="Password again">
+        <button type="submit">Get Started</button>
+        <a href="{% url 'login' %}">Already have an account?</a>
+    </form>
+{% endblock %}
